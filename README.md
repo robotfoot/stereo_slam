@@ -1,3 +1,5 @@
+Need to add `ns="left` (or right) to node element in rosrun raspicam_node camerav2_stuff.launch file
+
 ## Calibrate stereo camera
 
 run `calibrate_stereo_cameras.sh`
