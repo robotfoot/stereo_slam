@@ -1,3 +1,3 @@
 #! /bin/bash
 
-rosrun camera_calibration cameracalibrator.py --size 8x6 --square 0.019 right:=/stereo/right/image_rect left:=/stereo/left/image_rect --approximate=0.10 --no-service-check
+rosrun camera_calibration cameracalibrator.py --size 8x6 --square 0.019 right:=/right/raspicam_node/image  left:=/left/raspicam_node/image left_camera:=/left/raspicam_node right_camera:=/right/raspicam_node --approximate=0.10
