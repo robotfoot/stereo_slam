@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <launch>    
-  <node name="republish-left" type="republish" pkg="image_transport" output="screen" args="compressed in:=/left/raspicam_node/image out:=/stereo/left/image _image_transport:=compressed" />
-  <node name="republish-right" type="republish" pkg="image_transport" output="screen" args="compressed in:=/right/raspicam_node/image out:=/stereo/right/image _image_transport:=compressed" />
+  <node name="republish_left" type="republish" pkg="image_transport" output="screen" args="compressed in:=/left/raspicam_node/image out:=/stereo/left/image _image_transport:=compressed" />
+  <node name="republish_right" type="republish" pkg="image_transport" output="screen" args="compressed in:=/right/raspicam_node/image out:=/stereo/right/image _image_transport:=compressed" />
 
   <node ns="stereo" pkg="stereo_image_proc" type="stereo_image_proc" name="stereo_image_proc" output="screen">
     <remap from="left/image_raw" to="left/image"/>
@@ -9,6 +9,6 @@
     <remap from="right/camera_info" to="/right/raspicam_node/camera_info" />
     <remap from="left/camera_info" to="/left/raspicam_node/camera_info" />
     <param name="approximate_sync" value="True" />
-    <param name="queue_size" value="20" />
+    <param name="queue_size" value="100" />
   </node>
 </launch>
