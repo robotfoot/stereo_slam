@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/will/stereo_slam/catkin_ws/devel/setup.sh
