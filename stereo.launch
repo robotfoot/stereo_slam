@@ -1,17 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <launch>    
-        <node ns="stereo" pkg="stereo_image_proc" type="stereo_image_proc" name="stereo_image_proc" output="screen">
-            <remap from="left/image_raw" to="left/image"/>
-            <remap from="right/image_raw" to="right/image"/>
-            <remap from="right/camera_info" to="/right/raspicam_node/camera_info" />
-            <remap from="left/camera_info" to="/left/raspicam_node/camera_info" />
-<param name="approximate_sync" value="True" />
-<param name="queue_size" value="20" />
-        </node>
+  <node name="republish-left" type="republish" pkg="image_transport" output="screen" args="compressed in:=/left/raspicam_node/image out:=/stereo/left/image _image_transport:=compressed" />
+  <node name="republish-right" type="republish" pkg="image_transport" output="screen" args="compressed in:=/right/raspicam_node/image out:=/stereo/right/image _image_transport:=compressed" />
 
-        <!--node pkg="image_view" type="stereo_view" name="stereo_view">
-            <remap from="cameras_pan_tilt" to="stereo"/>
-            <remap from="image_rect" to="image"/>
-        </node-->
-
-        <!-- node pkg="rqt_reconfigure" type="rqt_reconfigure" name="rqt_reconfigure"/-->
+  <node ns="stereo" pkg="stereo_image_proc" type="stereo_image_proc" name="stereo_image_proc" output="screen">
+    <remap from="left/image_raw" to="left/image"/>
+    <remap from="right/image_raw" to="right/image"/>
+    <remap from="right/camera_info" to="/right/raspicam_node/camera_info" />
+    <remap from="left/camera_info" to="/left/raspicam_node/camera_info" />
+    <param name="approximate_sync" value="True" />
+    <param name="queue_size" value="20" />
+  </node>
 </launch>
